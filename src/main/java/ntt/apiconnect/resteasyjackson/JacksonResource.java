@@ -1,7 +1,12 @@
 package ntt.apiconnect.resteasyjackson;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
+
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Set;
@@ -26,9 +31,13 @@ public class JacksonResource {
     }
 
     @POST
-    public Set<Quark> add(Quark quark) {
-        quarks.add(quark);
-        return quarks;
+    @Path("/authentication")
+    public Response authentication(@Context HttpHeaders headers ) {
+        MultivaluedMap<String, String> requestHeaders = headers.getRequestHeaders();
+        requestHeaders.forEach((headerName,value)->{
+            System.out.println(headerName+" "+value);
+        });
+        return Response.status(200).entity(requestHeaders).build();        
     }
 
     @DELETE
