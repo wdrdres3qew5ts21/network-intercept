@@ -1,5 +1,8 @@
 # network-intercept project
 
+oc new-app --strategy=source https://github.com/wdrdres3qew5ts21/network-intercept
+
+
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
